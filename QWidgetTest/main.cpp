@@ -20,7 +20,6 @@ int main(int argc, char *argv[])
     w.show();
 
     LoadStyleFile(":/QWidgetTest/res/public_qss.qss");
-    LoadStyleFile("C:\\Users\\Administrator\\Desktop\\Develop\\QWidgetTest\\QWidgetTest\\res\\public_qss.qss");
-
+  
     return a.exec();
 }

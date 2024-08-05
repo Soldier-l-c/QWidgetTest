@@ -10,8 +10,8 @@
         <file>res/image/xiaoniao.ico</file>
     </qresource>
     <qresource prefix="/public">
-        <file>res/image/close.ico</file>
-        <file>res/image/max.ico</file>
-        <file>res/image/min.ico</file>
+        <file>res/image/min.png</file>
+        <file>res/image/max.png</file>
+        <file>res/image/close.png</file>
     </qresource>
 </RCC>
