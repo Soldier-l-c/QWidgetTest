@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "QWidgetTest.h"
 #include <QtWidgets/QApplication>
 

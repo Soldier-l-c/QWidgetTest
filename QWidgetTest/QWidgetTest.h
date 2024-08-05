@@ -1,9 +1,6 @@
 #pragma once
-#include <QtWidgets/QWidget>
-#include <Qt/include/BaseWindow.h>
-#include <qtimer.h>
-
 #include "battery/battery.h"
+#include <Qt/include/BaseWindow.h>
 
 class QWidgetTest : public BaseWindow<QWidget>
 {

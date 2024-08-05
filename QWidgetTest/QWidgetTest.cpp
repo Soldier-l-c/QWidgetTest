@@ -1,10 +1,11 @@
+#include "pch.h"
 #include "QWidgetTest.h"
-#include "battery/battery.h"
-#include <QVBoxLayout>
 
 QWidgetTest::QWidgetTest(QWidget *parent)
     : BaseWindow<QWidget>(parent)
 {
+    helper::ui::i18n::LoadTranslator(L"qwidget_test");
+
     InitUI();
     InitTimmer();
 }
@@ -39,7 +40,8 @@ void QWidgetTest::InitTimmer()
 
 QWidget* QWidgetTest::InitTitleWidget()
 {
-    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/emoji_213.ico", QString::fromStdWString(L"²âÊÔ³ÌÐò"), BaseUI::TitleFlag(BaseUI::DefaultTitleFlag ^ BaseUI::MaxButton));
+    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/emoji_213.ico", qtTrId("ids_title"),
+        BaseUI::TitleFlag(BaseUI::DefaultTitleFlag ^ BaseUI::MaxButton));
     title_widget->setStyleSheet(("background-color:rgb(214,214,214)"));
     return title_widget;
 }
