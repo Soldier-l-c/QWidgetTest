@@ -59,6 +59,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="TimeCounterWidget.cpp" />
     <QtRcc Include="QWidgetTest.qrc" />
     <QtUic Include="QWidgetTest.ui" />
     <QtMoc Include="QWidgetTest.h" />
@@ -71,6 +72,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <QtMoc Include="TimeCounterWidget.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

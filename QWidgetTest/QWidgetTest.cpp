@@ -2,7 +2,7 @@
 #include "QWidgetTest.h"
 
 QWidgetTest::QWidgetTest(QWidget *parent)
-    : BaseWindow<QWidget>(parent)
+    : BaseWindow<QWidget>(parent/*, Qt::Widget, false,0*/)
 {
     helper::ui::i18n::LoadTranslator(L"qwidget_test");
 
@@ -15,12 +15,14 @@ QWidgetTest::~QWidgetTest()
 
 void QWidgetTest::InitUI()
 {
-    setFixedSize(800, 600);
+    auto main_widget = GetMainWidget(QSize(800, 600));
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setContentsMargins(0, 0, 0, 0);
-    this->setLayout(layout);
+    layout->setSpacing(0);
 
+    main_widget->setLayout(layout);
+    main_widget->setWhatsThis("background_no_border");
     layout->addWidget(InitTitleWidget());
     layout->addWidget(InitContentWidget());
 }
@@ -30,7 +32,7 @@ void QWidgetTest::InitTimmer()
     connect(this, &QWidgetTest::SigTimeOut, this, &QWidgetTest::SlotTimeOut);
 
     timmer_ = new QTimer(this);
-    timmer_->setInterval(std::chrono::seconds(2));
+    timmer_->setInterval(std::chrono::milliseconds(100));
     timmer_->callOnTimeout([&]
         {
             SigTimeOut();
@@ -40,8 +42,9 @@ void QWidgetTest::InitTimmer()
 
 QWidget* QWidgetTest::InitTitleWidget()
 {
-    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/emoji_213.ico", qtTrId("ids_title"),
+    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/Ubuntu.ico", qtTrId("ids_title"),
         BaseUI::TitleFlag(BaseUI::DefaultTitleFlag ^ BaseUI::MaxButton));
+    title_widget->setFixedSize(GetMainWidget()->width(), BaseUI::default_title_bar_hight);
     title_widget->setStyleSheet(("background-color:rgb(214,214,214)"));
     return title_widget;
 }
@@ -49,8 +52,9 @@ QWidget* QWidgetTest::InitTitleWidget()
 QWidget* QWidgetTest::InitContentWidget()
 {
     auto content_widget = new QWidget;
-    content_widget->setFixedSize(width(), height() - BaseUI::default_title_bar_hight);
-    
+    content_widget->setFixedSize(GetMainWidget()->width(), GetMainWidget()->height() - BaseUI::default_title_bar_hight);
+    content_widget->setWhatsThis("background_no_border");
+
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setContentsMargins(0, 0, 0, 0);
     content_widget->setLayout(layout);
@@ -59,11 +63,16 @@ QWidget* QWidgetTest::InitContentWidget()
     QHBoxLayout* sub_layout = new QHBoxLayout;
     sub_layout->setContentsMargins(0, 0, 0, 0);
     sub_widget->setLayout(sub_layout);
+    sub_widget->setWhatsThis("background_no_border");
 
     battery_ = new  Battery(this);
     battery_->setFixedSize(100, 50);
 
+    time_counter_ = new TimeCounterWidget(this);
+    time_counter_->setFixedSize(270, 80);
+
     sub_layout->addWidget(battery_);
+    sub_layout->addWidget(time_counter_);
     layout->addWidget(sub_widget);
 
     return content_widget;
@@ -71,7 +80,8 @@ QWidget* QWidgetTest::InitContentWidget()
 
 void QWidgetTest::SlotTimeOut()
 {
-    static int32_t c = 20;
-    battery_->setValue(c);
-    c = (c + 20) % 120;
+    const auto one_day_sec = (24 * 60 * 60);
+    auto cur_time = (helper::time::get_timestamp_ins() + 8 * 3600) % one_day_sec;
+    battery_->setValue(int(100-((float)(cur_time) / (float)one_day_sec)*100));
+    time_counter_->UpdateTime(cur_time);
 }

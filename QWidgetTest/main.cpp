@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "QWidgetTest.h"
 #include <QtWidgets/QApplication>
-
 void LoadStyleFile(const QString& strStyle)
 {
     QFile qss(strStyle);

@@ -46,10 +46,16 @@
     <ClCompile Include="battery\battery.cpp">
       <Filter>battery</Filter>
     </ClCompile>
+    <ClCompile Include="TimeCounterWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="battery\battery.h">
       <Filter>battery</Filter>
+    </QtMoc>
+    <QtMoc Include="TimeCounterWidget.h">
+      <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
