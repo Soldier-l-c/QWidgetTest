@@ -1,0 +1,49 @@
+QLabel[whatsThis="default_title_bar_title"]
+{
+	color:white;
+	font-size:12px;
+	font:bold;
+	font-family:Microsoft Yahei;
+}
+
+QLabel[whatsThis="default_title_bar_logo"]
+{
+	border-image:url(:/public/logo);
+	min-height: 17x;
+	max-height: 17px;
+	min-width: 17px;
+	max-width: 17px;
+}
+
+QPushButton[whatsThis="default_title_bar_button"]
+{
+	font-size:12px;
+	font:bold;
+	font-family:Microsoft Yahei;
+}
+
+QPushButton[whatsThis="normal"]
+{
+    border: 1px solid rgba(204,204,204,1);
+    background-color:rgba(255,255,255,1);
+    color:rgba(0,0,0,1);
+    border-radius:15px;
+    min-height:30px;
+    font-family:Microsoft Yahei;
+    font-size:12px;
+	padding:0px 6px 0px 6px;
+}
+QPushButton[whatsThis="normal"]:hover
+{
+    background-color:rgba(245,245,245,1);
+}
+QPushButton[whatsThis="normal"]:pressed
+{
+    background-color:rgba(245,245,245,1);
+}
+QPushButton[whatsThis="normal"]:disabled
+{
+    border: 1px solid rgba(229,229,229,1);
+    color:rgba(102,102,102,1);
+    background-color:rgba(255,255,255,1);
+}

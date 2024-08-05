@@ -1,4 +1,17 @@
 <RCC>
-    <qresource prefix="QWidgetTest">
+    <qresource prefix="/QWidgetTest">
+        <file>res/image/789569_1_0.ico</file>
+        <file>res/public_qss.qss</file>
+        <file>res/image/13-1-1.ico</file>
+        <file>res/image/emoji_019.ico</file>
+        <file>res/image/emoji_213.ico</file>
+        <file>res/image/tianqi.ico</file>
+        <file>res/image/Ubuntu.ico</file>
+        <file>res/image/xiaoniao.ico</file>
+    </qresource>
+    <qresource prefix="/public">
+        <file>res/image/close.ico</file>
+        <file>res/image/max.ico</file>
+        <file>res/image/min.ico</file>
     </qresource>
 </RCC>
