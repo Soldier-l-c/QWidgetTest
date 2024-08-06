@@ -24,6 +24,12 @@
     <Filter Include="battery">
       <UniqueIdentifier>{1c508847-3ea4-40cc-949a-2d9744cbf957}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ListWidget">
+      <UniqueIdentifier>{8d239245-8fd1-4848-916e-8d49e9e12947}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="WeiBoHot">
+      <UniqueIdentifier>{458449f9-1e58-4a6c-b194-e1e81002191d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="QWidgetTest.qrc">
@@ -49,6 +55,21 @@
     <ClCompile Include="TimeCounterWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListWidget.cpp">
+      <Filter>ListWidget</Filter>
+    </ClCompile>
+    <ClCompile Include="WeiBoHotParser.cpp">
+      <Filter>WeiBoHot</Filter>
+    </ClCompile>
+    <ClCompile Include="WeiboHotLoader.cpp">
+      <Filter>WeiBoHot</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadStream.cpp">
+      <Filter>WeiBoHot</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="battery\battery.h">
@@ -57,10 +78,22 @@
     <QtMoc Include="TimeCounterWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ListWidget.h">
+      <Filter>ListWidget</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WeiBoHotParser.h">
+      <Filter>WeiBoHot</Filter>
+    </ClInclude>
+    <ClInclude Include="WeiboHotLoader.h">
+      <Filter>WeiBoHot</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadStream.h">
+      <Filter>WeiBoHot</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

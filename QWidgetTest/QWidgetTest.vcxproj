@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(SOLDIERS_PUBLIC)\;$(SOLDIERS_PUBLIC)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SOLDIERS_PUBLIC)\;$(SOLDIERS_PUBLIC)\include;$(SOLDIERS_3RD)\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -59,7 +59,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ListWidget.cpp" />
+    <ClCompile Include="LoadStream.cpp" />
+    <ClCompile Include="pch.cpp" />
     <ClCompile Include="TimeCounterWidget.cpp" />
+    <ClCompile Include="WeiboHotLoader.cpp" />
+    <ClCompile Include="WeiBoHotParser.cpp" />
     <QtRcc Include="QWidgetTest.qrc" />
     <QtUic Include="QWidgetTest.ui" />
     <QtMoc Include="QWidgetTest.h" />
@@ -71,6 +76,10 @@
     <QtMoc Include="battery\battery.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="LoadStream.h" />
+    <ClInclude Include="WeiboHotLoader.h" />
+    <ClInclude Include="WeiBoHotParser.h" />
+    <QtMoc Include="ListWidget.h" />
     <ClInclude Include="pch.h" />
     <QtMoc Include="TimeCounterWidget.h" />
   </ItemGroup>

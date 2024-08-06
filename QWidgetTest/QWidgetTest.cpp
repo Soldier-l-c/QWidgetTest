@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "QWidgetTest.h"
+#include "ListWidget.h"
 
 QWidgetTest::QWidgetTest(QWidget *parent)
-    : BaseWindow<QWidget>(parent/*, Qt::Widget, false,0*/)
+    : BaseWindow<QWidget>(parent, Qt::WindowStaysOnTopHint)
 {
     helper::ui::i18n::LoadTranslator(L"qwidget_test");
 
@@ -71,8 +72,13 @@ QWidget* QWidgetTest::InitContentWidget()
     time_counter_ = new TimeCounterWidget(this);
     time_counter_->setFixedSize(270, 80);
 
+    auto list_widget = new ListWidget(this);
+    list_widget->setFixedWidth(200);
+
+    sub_layout->addWidget(list_widget);
     sub_layout->addWidget(battery_);
     sub_layout->addWidget(time_counter_);
+    sub_layout->addStretch();
     layout->addWidget(sub_widget);
 
     return content_widget;
