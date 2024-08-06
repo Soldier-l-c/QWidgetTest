@@ -24,7 +24,9 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     InitLogger();
+
     LOG(INFO) << "Start";
+
     QWidgetTest w;
     w.show();
 

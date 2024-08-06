@@ -19,10 +19,10 @@ void ListWidget::InitUI()
 
 	WeiboHotLoader loader;
 	loader.Load(std::make_shared<WeiboFileStream>(helper::path::get_cur_full_path_combine(L"weibo_hot.json")));
-
+	auto index{ 0 };
 	for (const auto& iter : loader.GetInfo()->real_time_list)
 	{
-		auto list_item = new QListWidgetItem(iter->note.c_str(), list_widget_);
+		auto list_item = new QListWidgetItem(QString::number(++index) +"." + iter->note.c_str(), list_widget_);
 		list_widget_->addItem(list_item);
 	}
 }

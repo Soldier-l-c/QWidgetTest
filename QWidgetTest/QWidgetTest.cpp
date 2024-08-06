@@ -73,7 +73,7 @@ QWidget* QWidgetTest::InitContentWidget()
     time_counter_->setFixedSize(270, 80);
 
     auto list_widget = new ListWidget(this);
-    list_widget->setFixedWidth(200);
+    //list_widget->setFixedWidth(200);
 
     sub_layout->addWidget(list_widget);
     sub_layout->addWidget(battery_);
