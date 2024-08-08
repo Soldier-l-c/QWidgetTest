@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "LoadStream.h"
-
+#include <base/NerHelper.h>
 WeiboFileStream::WeiboFileStream(const std::wstring& file_path):file_path_(file_path)
 {
 
@@ -26,6 +26,18 @@ const std::string& WeiboFileStream::Read()
         return info_;
     }
     info_ = std::move(buffer.str());
+
+    return info_;
+}
+
+const std::string& WeiboHttpStream::Read()
+{
+    std::string err_msg;
+    int32_t curl_code{ 0 }, http_code{ 0 };
+    NsNetHelper::NetError net_err{ NsNetHelper::FAILED };
+    NsNetHelper::HttpRequest("https://weibo.com/ajax/side/hotSearch", "", {}, info_, err_msg, curl_code, http_code, net_err);
+
+    LOG(INFO) << "http_code: [" << http_code << "] curl_code : [" << curl_code << "] err_msg:[" << err_msg << "] net_err:[" << (int32_t)net_err << "]";
 
     return info_;
 }

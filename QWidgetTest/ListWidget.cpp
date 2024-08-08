@@ -18,7 +18,7 @@ void ListWidget::InitUI()
 	list_widget_->setWhatsThis("background_no_border");
 
 	WeiboHotLoader loader;
-	loader.Load(std::make_shared<WeiboFileStream>(helper::path::get_cur_full_path_combine(L"weibo_hot.json")));
+	loader.Load(std::make_shared<WeiboHttpStream>());
 	auto index{ 0 };
 	for (const auto& iter : loader.GetInfo()->real_time_list)
 	{

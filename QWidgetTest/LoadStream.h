@@ -16,3 +16,13 @@ private:
 	std::wstring file_path_;
 	std::string info_;
 };
+
+class WeiboHttpStream :public LoadStream
+{
+public:
+	WeiboHttpStream() = default;
+	virtual const std::string& Read();
+
+private:
+	std::string info_;
+};

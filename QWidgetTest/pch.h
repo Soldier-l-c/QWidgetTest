@@ -27,6 +27,7 @@
 #include <interface/smart_object.h>
 #include <interface/object_creater.h>
 #include <logger/ILogger.h>
+#include <base/INetHelper.h>
 
 extern ILoggerPtr g_logger;
 #define LOG ILOG
