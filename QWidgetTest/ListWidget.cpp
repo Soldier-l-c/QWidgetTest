@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ListWidget.h"
 #include "WeiboHotLoader.h"
+#include "ListitemWidget.h"
 
 ListWidget::ListWidget(QWidget* parent) :QWidget(parent)
 {
@@ -22,7 +23,8 @@ void ListWidget::InitUI()
 	auto index{ 0 };
 	for (const auto& iter : loader.GetInfo()->real_time_list)
 	{
-		auto list_item = new QListWidgetItem(QString::number(++index) +"." + iter->note.c_str(), list_widget_);
+		auto list_item = new QListWidgetItem();
 		list_widget_->addItem(list_item);
+		list_widget_->setItemWidget(list_item, new ListitemWidget(++index, iter));
 	}
 }

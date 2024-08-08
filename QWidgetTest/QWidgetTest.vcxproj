@@ -59,6 +59,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ListitemWidget.cpp" />
     <ClCompile Include="ListWidget.cpp" />
     <ClCompile Include="LoadStream.cpp" />
     <ClCompile Include="pch.cpp" />
@@ -76,6 +77,7 @@
     <QtMoc Include="battery\battery.h" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="ListitemWidget.h" />
     <ClInclude Include="LoadStream.h" />
     <ClInclude Include="WeiboHotLoader.h" />
     <ClInclude Include="WeiBoHotParser.h" />

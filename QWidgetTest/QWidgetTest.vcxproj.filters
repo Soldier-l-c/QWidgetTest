@@ -70,6 +70,9 @@
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListitemWidget.cpp">
+      <Filter>ListWidget</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="battery\battery.h">
@@ -79,6 +82,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ListWidget.h">
+      <Filter>ListWidget</Filter>
+    </QtMoc>
+    <QtMoc Include="ListitemWidget.h">
       <Filter>ListWidget</Filter>
     </QtMoc>
   </ItemGroup>

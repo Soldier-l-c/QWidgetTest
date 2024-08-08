@@ -8,6 +8,19 @@ void WeiBoRealTimeInfo::Parse(const rapidjson::Value& oj_hot_item)
 	rank = helper::Rapidjson::GetInt32("rank", oj_hot_item);
 	note = helper::Rapidjson::GetString("note", oj_hot_item);
 	url = "https://s.weibo.com/weibo?q=%23"+ note +"%23";
+	icon = helper::Rapidjson::GetString("icon", oj_hot_item);
+
+	if (!is_ad)
+	{
+		auto pos = icon.rfind('/');
+		std::wstring icon_name;
+		if (pos != std::string::npos)
+		{
+			icon_name = helper::String::utf8_to_utf16(icon.substr(pos + 1).c_str());
+		}
+
+		icon_local_path = helper::path::get_cur_full_path_combine((L"icons/" + icon_name).c_str());
+	}
 }
 
 void WeiBoHotGovInfo::Parse(const rapidjson::Value& oj_gov_item)

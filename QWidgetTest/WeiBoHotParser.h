@@ -1,4 +1,5 @@
 #pragma once
+#include <helper/util_rapidjson.h>
 
 struct WeiBoRealTimeInfo
 {
@@ -7,6 +8,8 @@ struct WeiBoRealTimeInfo
 	int32_t rank{ 0 };
 	std::string note;
 	std::string url;
+	std::wstring icon_local_path;
+	std::string icon;
 	void Parse(const rapidjson::Value& oj_hot_item);
 };
 

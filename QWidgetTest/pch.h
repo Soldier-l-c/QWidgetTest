@@ -16,6 +16,7 @@
 
 #include <Qt/include/BaseWindow.h>
 #include <Qt/include/helper/i18n_loader_helper.h>
+#include <Qt/include/helper/qt_util_helper.h>
 
 #include <helper/util_time.h>
 #include <helper/util_path.h>

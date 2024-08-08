@@ -16,7 +16,7 @@ QWidgetTest::~QWidgetTest()
 
 void QWidgetTest::InitUI()
 {
-    auto main_widget = GetMainWidget(QSize(800, 600));
+    auto main_widget = GetMainWidget(QSize(1000, 600));
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setContentsMargins(0, 0, 0, 0);

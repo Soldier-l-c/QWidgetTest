@@ -6,6 +6,13 @@ QLabel[whatsThis="default_title_bar_title"]
 	font-family:Microsoft Yahei;
 }
 
+QLabel[whatsThis="default_label"]
+{
+	color:rgba(0,0,0);
+	font-size:12px;
+	font-family:Microsoft Yahei;
+}
+
 QLabel[whatsThis="default_title_bar_logo"]
 {
 	border-image:url(:/public/logo);
