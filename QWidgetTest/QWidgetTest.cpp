@@ -1,6 +1,5 @@
 #include "pch.h"
 #include "QWidgetTest.h"
-#include "ListWidget.h"
 
 QWidgetTest::QWidgetTest(QWidget *parent)
     : BaseWindow<QWidget>(parent, Qt::WindowStaysOnTopHint)
@@ -16,7 +15,7 @@ QWidgetTest::~QWidgetTest()
 
 void QWidgetTest::InitUI()
 {
-    auto main_widget = GetMainWidget(QSize(1200, 600));
+    auto main_widget = GetMainWidget(QSize(440, 800));
 
     QVBoxLayout* layout = new QVBoxLayout;
     layout->setContentsMargins(0, 0, 0, 0);
@@ -33,7 +32,7 @@ void QWidgetTest::InitTimmer()
     connect(this, &QWidgetTest::SigTimeOut, this, &QWidgetTest::SlotTimeOut);
 
     timmer_ = new QTimer(this);
-    timmer_->setInterval(std::chrono::milliseconds(100));
+    timmer_->setInterval(std::chrono::seconds(1));
     timmer_->callOnTimeout([&]
         {
             SigTimeOut();
@@ -43,10 +42,10 @@ void QWidgetTest::InitTimmer()
 
 QWidget* QWidgetTest::InitTitleWidget()
 {
-    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/Ubuntu.ico", qtTrId("ids_title"),
+    auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/weibo.png", qtTrId("ids_title"),
         BaseUI::TitleFlag(BaseUI::DefaultTitleFlag ^ BaseUI::MaxButton));
     title_widget->setFixedSize(GetMainWidget()->width(), BaseUI::default_title_bar_hight);
-    title_widget->setStyleSheet(("background-color:rgb(214,214,214)"));
+    title_widget->setStyleSheet(("background-color:rgb(255,255,255)"));
     return title_widget;
 }
 
@@ -57,37 +56,30 @@ QWidget* QWidgetTest::InitContentWidget()
     content_widget->setWhatsThis("background_no_border");
 
     QVBoxLayout* layout = new QVBoxLayout;
-    layout->setContentsMargins(0, 0, 0, 0);
+    layout->setContentsMargins(10, 10, 10, 10);
     content_widget->setLayout(layout);
 
-    auto sub_widget = new QWidget;
-    QHBoxLayout* sub_layout = new QHBoxLayout;
-    sub_layout->setContentsMargins(0, 0, 0, 0);
-    sub_widget->setLayout(sub_layout);
-    sub_widget->setWhatsThis("background_no_border");
-
-    battery_ = new  Battery(this);
-    battery_->setFixedSize(100, 50);
-
     time_counter_ = new TimeCounterWidget(this);
-    time_counter_->setFixedSize(270, 80);
+    time_counter_->setFixedSize(content_widget->width()-20, 80);
 
-    auto list_widget = new ListWidget(this);
-    //list_widget->setFixedWidth(200);
+    list_widget_ = new ListWidget(this);
 
-    sub_layout->addWidget(list_widget);
-    sub_layout->addWidget(battery_);
-    sub_layout->addWidget(time_counter_);
-    sub_layout->addStretch();
-    layout->addWidget(sub_widget);
+    layout->addWidget(time_counter_);
+    layout->addWidget(list_widget_);
+
+    connect(list_widget_, &ListWidget::SigInfoUpdateSuccess, this, &QWidgetTest::UpdateTimeCounter);
 
     return content_widget;
 }
 
 void QWidgetTest::SlotTimeOut()
 {
+    list_widget_->Update();
+}
+
+void QWidgetTest::UpdateTimeCounter()
+{
     const auto one_day_sec = (24 * 60 * 60);
     auto cur_time = (helper::time::get_timestamp_ins() + 8 * 3600) % one_day_sec;
-    battery_->setValue(int(100-((float)(cur_time) / (float)one_day_sec)*100));
     time_counter_->UpdateTime(cur_time);
 }

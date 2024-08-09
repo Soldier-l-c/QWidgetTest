@@ -87,8 +87,9 @@ void TimeCounterWidget::InitUI()
 	hbox_layout->addStretch();
 	hbox_layout->setContentsMargins(0, 0, 0, 0);
 
-	vbox_layout->addSpacing(5);
+	vbox_layout->addStretch();
 	vbox_layout->addWidget(time_widget);
+	vbox_layout->addStretch();
 	hbox_layout->setContentsMargins(0, 0, 0, 0);
 }
 

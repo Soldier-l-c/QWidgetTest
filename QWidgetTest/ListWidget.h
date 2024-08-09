@@ -8,19 +8,28 @@ class ListWidget :public QWidget
 public:
 	ListWidget(QWidget* parent = nullptr);
 
+	bool Update();
+
 private:
 	void InitUI();
 
 signals:
 	void SigReadFinsh();
-	void SigIconDownloadFinsh();
+	void SigIconDownloadFinsh(int index);
+	void SigInfoUpdateSuccess();
 
 public:
 	void SlotReadFinsh();
-	void SlotIconDownloadFinsh();
+	void SlotIconDownloadFinsh(int index);
 	void SlotItemClicked(QListWidgetItem* item);
 
 private:
+	void InitListWidget();
+	void ReSetListWidget();
+
+private:
 	QListWidget* list_widget_{ nullptr };
-	WeiboHotLoader loader_;
+	WeiboHotLoader loader_; 
+	const int32_t update_interval_{ 30 };
+	time_t last_update_time_{ 0 };
 };

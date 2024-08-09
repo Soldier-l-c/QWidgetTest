@@ -1,6 +1,7 @@
 #pragma once
 #include "battery/battery.h"
 #include "TimeCounterWidget.h"
+#include "ListWidget.h"
 #include <Qt/include/BaseWindow.h>
 
 class QWidgetTest : public BaseWindow<QWidget>
@@ -17,6 +18,9 @@ signals:
 public:
     void SlotTimeOut();
 
+public:
+    void UpdateTimeCounter();
+
 private:
     void InitUI();
     void InitTimmer();
@@ -30,4 +34,5 @@ public:
     Battery* battery_{ nullptr };
     QWidget* background_{ nullptr };
     TimeCounterWidget* time_counter_{ 0 };
+    ListWidget* list_widget_{ nullptr };
 };

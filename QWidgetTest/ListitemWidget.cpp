@@ -37,7 +37,7 @@ size_t TextWidth(const QString& str, int32_t font_size)
 void ListitemWidget::InitUI()
 {
 	QHBoxLayout* layout = new QHBoxLayout;
-	layout->setContentsMargins(5, 0, 0, 5);
+	layout->setContentsMargins(5, 0, 5, 0);
 	setLayout(layout);
 
 	setFixedHeight(24);
@@ -62,6 +62,8 @@ void ListitemWidget::InitUI()
 	label_falg_desc_->setWhatsThis("default_label");
 	label_hot_num_->setWhatsThis("default_label");
 
+	label_index_->setAlignment(Qt::AlignVCenter);
+
 	UpdateIcon();
 	helper::SetTest(label_index_, QString::number(index_) + ".");
 	helper::SetTest(label_note_, hot_info_ptr_->note.c_str());
@@ -75,13 +77,14 @@ void ListitemWidget::InitUI()
 	layout->addWidget(label_falg_desc_);
 	layout->addSpacing(5);
 	layout->addWidget(label_hot_num_);
-	layout->addStretch();
+	layout->addSpacing(5);
 	layout->addWidget(label_icon_);
+	layout->addStretch();
 }
 
 void ListitemWidget::SlotClicked()
 {
-	if (false && hot_info_ptr_->url.length())
+	if (hot_info_ptr_->url.length())
 	{
 		QUrl url(hot_info_ptr_->url.c_str());
 		if (!QDesktopServices::openUrl(url)) 

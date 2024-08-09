@@ -81,6 +81,5 @@ void WeiBoHotInfo::ParseRealTime(const rapidjson::Value& realtime)
 		if (realtime_info->is_ad)continue;
 
 		real_time_list.push_back(realtime_info);
-
 	}
 }
