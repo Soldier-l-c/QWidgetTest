@@ -15,7 +15,7 @@ void LoadStyleFile(const QString& strStyle)
 void InitLogger()
 {
     ObjectCreater creater;
-    creater.Load(L"Demo.dll");
+    creater.Load(L"SoldierBase.dll");
     creater.CreateObject(g_logger);
     g_logger->Init(L"app.qttest");
 }
