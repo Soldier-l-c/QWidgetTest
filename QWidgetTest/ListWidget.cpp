@@ -7,7 +7,6 @@ ListWidget::ListWidget(QWidget* parent) :QWidget(parent)
 {
 	connect(this, &ListWidget::SigReadFinsh, this, &ListWidget::SlotReadFinsh);
 	connect(this, &ListWidget::SigIconDownloadFinsh, this, &ListWidget::SlotIconDownloadFinsh);
-
 	thread_pool::ThreadPool::instance().CommitTask([this] 
 		{
 			loader_.Load(std::make_shared<WeiboHttpStream>());
@@ -37,6 +36,8 @@ void ListWidget::InitUI()
 void ListWidget::SlotReadFinsh()
 {
 	InitUI();
+	
+	connect(list_widget_, &QListWidget::itemClicked, this, &ListWidget::SlotItemClicked);
 
 	thread_pool::ThreadPool::instance().CommitTask([this]
 		{
@@ -64,4 +65,9 @@ void ListWidget::SlotIconDownloadFinsh()
 	{
 		(dynamic_cast<ListitemWidget*>(list_widget_->itemWidget(list_widget_->item(i))))->UpdateIcon();
 	}
+}
+
+void ListWidget::SlotItemClicked(QListWidgetItem* item)
+{
+	(dynamic_cast<ListitemWidget*>(list_widget_->itemWidget(item)))->SlotClicked();
 }

@@ -27,8 +27,15 @@ int main(int argc, char *argv[])
 
     LOG(INFO) << "Start";
 
+    helper::time::Timer timer;
+
     QWidgetTest w;
+
+    LOG(INFO) << "QWidgetTest const time:[" << timer << "]";
+
     w.show();
+
+    LOG(INFO) << "QWidgetTest const time:[" << timer << "]";
 
     LoadStyleFile(":/QWidgetTest/res/public_qss.qss");
   

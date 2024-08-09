@@ -18,6 +18,7 @@ signals:
 public:
 	void SlotReadFinsh();
 	void SlotIconDownloadFinsh();
+	void SlotItemClicked(QListWidgetItem* item);
 
 private:
 	QListWidget* list_widget_{ nullptr };

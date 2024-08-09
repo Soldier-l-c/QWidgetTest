@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "ListitemWidget.h"
 #include <QFont>
+#include <qdesktopservices.h>
 
 ListitemWidget::ListitemWidget(int32_t index, RealTimeInfoPtr hot_info_ptr, QWidget* parent) :
 	QWidget(parent),
@@ -13,8 +14,9 @@ ListitemWidget::ListitemWidget(int32_t index, RealTimeInfoPtr hot_info_ptr, QWid
 
 void ListitemWidget::UpdateIcon()
 {
-	if (helper::path::path_exists(hot_info_ptr_->icon_local_path))
+	if (!loaded_icon_ && helper::path::path_exists(hot_info_ptr_->icon_local_path))
 	{
+		loaded_icon_ = true;
 		label_icon_->setPixmap(QIcon(QString::fromStdWString(hot_info_ptr_->icon_local_path)).pixmap(24, 24));
 	}
 	else
@@ -75,4 +77,16 @@ void ListitemWidget::InitUI()
 	layout->addWidget(label_hot_num_);
 	layout->addStretch();
 	layout->addWidget(label_icon_);
+}
+
+void ListitemWidget::SlotClicked()
+{
+	if (false && hot_info_ptr_->url.length())
+	{
+		QUrl url(hot_info_ptr_->url.c_str());
+		if (!QDesktopServices::openUrl(url)) 
+		{
+			
+		}
+	}
 }
