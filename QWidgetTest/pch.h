@@ -22,6 +22,7 @@
 #include <helper/util_path.h>
 #include <helper/util_rapidjson.h>
 #include <helper/util_string.h>
+#include <thread/thread_pool.h>
 
 #include "public/result_code.h"
 #include <interface/smart_base.h>
@@ -29,6 +30,7 @@
 #include <interface/object_creater.h>
 #include <logger/ILogger.h>
 #include <base/INetHelper.h>
+#include <base/NetHelper.h>
 
 extern ILoggerPtr g_logger;
 #define LOG ILOG

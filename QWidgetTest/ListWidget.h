@@ -1,6 +1,7 @@
 #pragma once
 #include <QListWidget>
 #include <QWidget>
+#include "WeiboHotLoader.h"
 class ListWidget :public QWidget
 {
 	Q_OBJECT
@@ -10,6 +11,15 @@ public:
 private:
 	void InitUI();
 
+signals:
+	void SigReadFinsh();
+	void SigIconDownloadFinsh();
+
+public:
+	void SlotReadFinsh();
+	void SlotIconDownloadFinsh();
+
 private:
 	QListWidget* list_widget_{ nullptr };
+	WeiboHotLoader loader_;
 };

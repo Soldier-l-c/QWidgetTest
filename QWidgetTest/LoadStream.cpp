@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "LoadStream.h"
-#include <base/NerHelper.h>
+
 WeiboFileStream::WeiboFileStream(const std::wstring& file_path):file_path_(file_path)
 {
 

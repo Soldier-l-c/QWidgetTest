@@ -18,6 +18,8 @@ private:
 	int32_t index_{ 0 };
 	QLabel* label_index_{ nullptr };
 	QLabel* label_note_{ nullptr };
+	QLabel* label_hot_num_{ nullptr };
+	QLabel* label_falg_desc_{ nullptr };
 	QLabel* label_icon_{ nullptr };
 };
 

@@ -10,6 +10,8 @@ struct WeiBoRealTimeInfo
 	std::string url;
 	std::wstring icon_local_path;
 	std::string icon;
+	std::string flag_desc;
+	std::string hot_num_str;
 	void Parse(const rapidjson::Value& oj_hot_item);
 };
 

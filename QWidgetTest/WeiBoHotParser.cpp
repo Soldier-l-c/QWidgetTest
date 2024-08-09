@@ -9,6 +9,7 @@ void WeiBoRealTimeInfo::Parse(const rapidjson::Value& oj_hot_item)
 	note = helper::Rapidjson::GetString("note", oj_hot_item);
 	url = "https://s.weibo.com/weibo?q=%23"+ note +"%23";
 	icon = helper::Rapidjson::GetString("icon", oj_hot_item);
+	flag_desc = helper::Rapidjson::GetString("flag_desc", oj_hot_item);
 
 	if (!is_ad)
 	{
@@ -21,6 +22,13 @@ void WeiBoRealTimeInfo::Parse(const rapidjson::Value& oj_hot_item)
 
 		icon_local_path = helper::path::get_cur_full_path_combine((L"icons/" + icon_name).c_str());
 	}
+	
+	if (hot_num > 0)
+	{
+		auto n = (hot_num * 10) / 10000;
+		hot_num_str = std::to_string((n / 10)) + "." + std::to_string(n % 10);
+	}
+
 }
 
 void WeiBoHotGovInfo::Parse(const rapidjson::Value& oj_gov_item)
@@ -69,7 +77,10 @@ void WeiBoHotInfo::ParseRealTime(const rapidjson::Value& realtime)
 		++realtime_count;
 
 		auto realtime_info = std::make_shared<WeiBoRealTimeInfo>();
-		real_time_list.push_back(realtime_info);
 		realtime_info->Parse(*iter);
+		if (realtime_info->is_ad)continue;
+
+		real_time_list.push_back(realtime_info);
+
 	}
 }
