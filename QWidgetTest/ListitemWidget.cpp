@@ -65,7 +65,16 @@ void ListitemWidget::InitUI()
 	label_index_->setAlignment(Qt::AlignVCenter);
 
 	UpdateIcon();
-	helper::SetTest(label_index_, QString::number(index_) + ".");
+
+	if (index_ == 1)
+	{
+		label_index_->setPixmap(QIcon(":/QWidgetTest/res/image/top.png").pixmap(24, 24));
+	}
+	else
+	{
+		helper::SetTest(label_index_, QString::number(index_-1) + ".");
+	}
+
 	helper::SetTest(label_note_, hot_info_ptr_->note.c_str());
 	helper::SetTest(label_falg_desc_, hot_info_ptr_->flag_desc.c_str());
 	helper::SetTest(label_hot_num_, hot_info_ptr_->hot_num_str.c_str()+qtTrId("ids_wan"));

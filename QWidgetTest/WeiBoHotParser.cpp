@@ -33,6 +33,16 @@ void WeiBoRealTimeInfo::Parse(const rapidjson::Value& oj_hot_item)
 
 void WeiBoHotGovInfo::Parse(const rapidjson::Value& oj_gov_item)
 {
+	WeiBoRealTimeInfo::Parse(oj_gov_item);
+
+	note = helper::Rapidjson::GetString("note", oj_gov_item);
+
+	if (note.length() > 0 && note[0] == '#' && note[note.length()-1] == '#')
+	{
+		note = note.substr(1, note.length() - 2);
+	}
+
+	url = "https://s.weibo.com/weibo?q=%23" + note + "%23";
 }
 
 void WeiBoHotInfo::Parse(const std::string& data)
@@ -63,6 +73,8 @@ void WeiBoHotInfo::Parse(const std::string& data)
 	{
 		gov_info = std::make_shared<WeiBoHotGovInfo>();
 		gov_info->Parse(data_obj["hotgov"]);
+		real_time_list.insert(real_time_list.begin(), gov_info);
+		++realtime_count;
 	}
 }
 

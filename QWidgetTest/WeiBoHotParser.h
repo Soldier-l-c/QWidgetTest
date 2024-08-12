@@ -12,20 +12,16 @@ struct WeiBoRealTimeInfo
 	std::string icon;
 	std::string flag_desc;
 	std::string hot_num_str;
-	void Parse(const rapidjson::Value& oj_hot_item);
+	virtual void Parse(const rapidjson::Value& oj_hot_item);
 };
 
-struct WeiBoHotGovInfo
+struct WeiBoHotGovInfo : public WeiBoRealTimeInfo
 {
-	int64_t hot_num{ 0 };
-	int64_t stime{ 0 };
-	std::string name;
-	std::string url;
 	void Parse(const rapidjson::Value& oj_gov_item);
 };
 
 using RealTimeInfoPtr = std::shared_ptr<WeiBoRealTimeInfo>;
-using WeiBoHotGovInfoPrt = std::shared_ptr<WeiBoHotGovInfo>;
+using WeiBoHotGovInfoPtr = std::shared_ptr<WeiBoHotGovInfo>;
 using RealTimeInfoList = std::vector<RealTimeInfoPtr>;
 
 struct WeiBoHotInfo
@@ -37,6 +33,6 @@ struct WeiBoHotInfo
 	void ParseRealTime(const rapidjson::Value& realtime);
 
 	RealTimeInfoList real_time_list;
-	WeiBoHotGovInfoPrt gov_info;
+	WeiBoHotGovInfoPtr gov_info;
 };
 using WeiBoHotInfoPtr = std::shared_ptr<WeiBoHotInfo>;

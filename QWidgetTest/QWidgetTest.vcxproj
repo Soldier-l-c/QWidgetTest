@@ -44,6 +44,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>$(SOLDIERS_PUBLIC)\;$(SOLDIERS_PUBLIC)\include;$(SOLDIERS_3RD)\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <DisableSpecificWarnings>4819;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)' == 'Release|Win32'" Label="Configuration">

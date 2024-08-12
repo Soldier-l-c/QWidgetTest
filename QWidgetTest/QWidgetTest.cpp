@@ -13,6 +13,17 @@ QWidgetTest::QWidgetTest(QWidget *parent)
 QWidgetTest::~QWidgetTest()
 {}
 
+bool __stdcall QWidgetTest::TimerCallBack(uint32_t time_id, void* context, int32_t call_count, int32_t index)
+{
+    if (!context)return false;
+
+    auto widget = static_cast<QWidgetTest*>(context);
+    LOG(INFO) << "TimerCallBack";
+    widget->SigTimeOut();
+
+    return true;
+}
+
 void QWidgetTest::InitUI()
 {
     auto main_widget = GetMainWidget(QSize(440, 800));
@@ -29,15 +40,11 @@ void QWidgetTest::InitUI()
 
 void QWidgetTest::InitTimmer()
 {
-    connect(this, &QWidgetTest::SigTimeOut, this, &QWidgetTest::SlotTimeOut);
+    connect(this, &QWidgetTest::SigTimeOut, this, &QWidgetTest::SlotTimeOut, Qt::DirectConnection);
 
-    timmer_ = new QTimer(this);
-    timmer_->setInterval(std::chrono::seconds(1));
-    timmer_->callOnTimeout([&]
-        {
-            SigTimeOut();
-        });
-    timmer_->start();
+    auto timer = NsNetHelper::CreateObject<ITimerPtr>();
+
+    timer->AddTimer(0, TimerCallBack, this, 1000, -1);
 }
 
 QWidget* QWidgetTest::InitTitleWidget()
@@ -45,7 +52,7 @@ QWidget* QWidgetTest::InitTitleWidget()
     auto title_widget = CreateTitleBar(":/QWidgetTest/res/image/weibo.png", qtTrId("ids_title"),
         BaseUI::TitleFlag(BaseUI::DefaultTitleFlag ^ BaseUI::MaxButton));
     title_widget->setFixedSize(GetMainWidget()->width(), BaseUI::default_title_bar_hight);
-    title_widget->setStyleSheet(("background-color:rgb(255,255,255)"));
+    title_widget->setStyleSheet(("background-color:rgb(214,214,214)"));
     return title_widget;
 }
 

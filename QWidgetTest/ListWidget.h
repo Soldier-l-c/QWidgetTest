@@ -30,6 +30,6 @@ private:
 private:
 	QListWidget* list_widget_{ nullptr };
 	WeiboHotLoader loader_; 
-	const int32_t update_interval_{ 30 };
+	const int32_t update_interval_{ 60*10 };
 	time_t last_update_time_{ 0 };
 };

@@ -9,6 +9,7 @@
         <file>res/image/Ubuntu.ico</file>
         <file>res/image/xiaoniao.ico</file>
         <file>res/image/weibo.png</file>
+        <file>res/image/top.png</file>
     </qresource>
     <qresource prefix="/public">
         <file>res/image/min.png</file>

@@ -32,6 +32,8 @@
 #include <base/INetHelper.h>
 #include <base/NetHelper.h>
 
+#include <base/ITimer.h>
+
 extern ILoggerPtr g_logger;
 #define LOG ILOG
 

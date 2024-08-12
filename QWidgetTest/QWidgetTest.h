@@ -12,6 +12,8 @@ public:
     QWidgetTest(QWidget* parent = nullptr);
     ~QWidgetTest();
 
+    static bool __stdcall TimerCallBack(uint32_t time_id, void* context, int32_t call_count, int32_t index);
+
 signals:
     void SigTimeOut();
 
@@ -30,7 +32,6 @@ private:
 
 public:
     const int32_t shadow_radius_{ 10 };
-    QTimer* timmer_{ nullptr };
     Battery* battery_{ nullptr };
     QWidget* background_{ nullptr };
     TimeCounterWidget* time_counter_{ 0 };
