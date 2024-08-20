@@ -31,8 +31,11 @@
 #include <logger/ILogger.h>
 #include <base/INetHelper.h>
 #include <base/NetHelper.h>
-
 #include <base/ITimer.h>
+
+#define EXE_AND_GLOBAL_INIT
+#include <base/BaseHelper.h>
+
 
 extern ILoggerPtr g_logger;
 #define LOG ILOG

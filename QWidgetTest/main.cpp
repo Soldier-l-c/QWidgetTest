@@ -14,15 +14,18 @@ void LoadStyleFile(const QString& strStyle)
 
 void InitLogger()
 {
-    ObjectCreater creater;
-    creater.Load(L"SoldierBase.dll");
-    creater.CreateObject(g_logger);
+    g_logger = NsBaseHelper::CreateObject<decltype(g_logger)>();
     g_logger->Init(L"app.qttest");
+    g_logger->SetProperty(logger::LoggerProperty::AsynLog, 1);
 }
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    if (!NsBaseHelper::GlobalInit())
+        return -1;
+
     InitLogger();
 
     LOG(INFO) << "Start";
