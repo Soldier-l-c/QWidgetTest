@@ -62,13 +62,14 @@ void ListWidget::SlotReadFinsh()
 				if (iter->icon.empty())continue;
 				
 				auto exists = helper::path::path_exists(iter->icon_local_path);
+				if (exists)continue;
 
 				std::string err_msg;
 				int32_t curl_code{ 0 }, http_code{ 0 };
 				NsNetHelper::NetError net_err{ NsNetHelper::SUCCESSED };
-				auto res = exists || NsNetHelper::DownloadFile(iter->icon, iter->icon_local_path, err_msg, curl_code, http_code, net_err);
+				auto res = NsNetHelper::DownloadFile(iter->icon, iter->icon_local_path, err_msg, curl_code, http_code, net_err);
 
-				if (res || exists)
+				if (res)
 				{
 					SigIconDownloadFinsh(index);
 				}
