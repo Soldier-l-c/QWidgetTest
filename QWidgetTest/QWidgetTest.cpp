@@ -2,7 +2,7 @@
 #include "QWidgetTest.h"
 
 QWidgetTest::QWidgetTest(QWidget *parent)
-    : BaseWindow<QWidget>(parent, Qt::WindowStaysOnTopHint)
+    : BaseWindow<QWidget>(parent)
 {
     helper::ui::i18n::LoadTranslator(L"qwidget_test");
 
