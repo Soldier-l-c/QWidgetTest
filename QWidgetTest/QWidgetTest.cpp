@@ -42,7 +42,7 @@ void QWidgetTest::InitTimmer()
 {
     connect(this, &QWidgetTest::SigTimeOut, this, &QWidgetTest::SlotTimeOut, Qt::DirectConnection);
 
-    auto timer = NsNetHelper::CreateObject<ITimerPtr>();
+    auto timer = NsBaseHelper::CreateObject<ITimerPtr>();
 
     timer->AddTimer(0, TimerCallBack, this, 1000, -1);
 }

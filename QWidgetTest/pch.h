@@ -9,7 +9,7 @@
 #include <map>
 #include <fstream>
 #include <sstream>
-
+#define EXE_AND_GLOBAL_INIT
 #include <QtWidgets/QWidget>
 #include <QVBoxLayout>
 #include <QTimer>
