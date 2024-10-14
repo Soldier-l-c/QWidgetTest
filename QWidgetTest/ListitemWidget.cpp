@@ -25,14 +25,7 @@ void ListitemWidget::UpdateIcon()
 	}
 }
 
-size_t TextWidth(const QString& str, int32_t font_size)
-{
-	QFont font;
-	font.setPointSize(font_size); // 设置字体大小
 
-	QFontMetrics metrics(font);
-	return metrics.horizontalAdvance(str); // 获取字体宽度
-}
 
 void ListitemWidget::InitUI()
 {
@@ -72,12 +65,12 @@ void ListitemWidget::InitUI()
 	}
 	else
 	{
-		helper::SetTest(label_index_, QString::number(index_-1) + ".");
+		helper::SetText(label_index_, QString::number(index_-1) + ".");
 	}
 
-	helper::SetTest(label_note_, hot_info_ptr_->note.c_str());
-	helper::SetTest(label_falg_desc_, hot_info_ptr_->flag_desc.c_str());
-	helper::SetTest(label_hot_num_, hot_info_ptr_->hot_num_str.c_str()+qtTrId("ids_wan"));
+	helper::SetText(label_note_, hot_info_ptr_->note.c_str());
+	helper::SetText(label_falg_desc_, hot_info_ptr_->flag_desc.c_str());
+	helper::SetText(label_hot_num_, hot_info_ptr_->hot_num_str.c_str()+qtTrId("ids_wan"));
 
 	layout->addWidget(label_index_);
 	layout->addSpacing(5);

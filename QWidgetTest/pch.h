@@ -9,7 +9,7 @@
 #include <map>
 #include <fstream>
 #include <sstream>
-#define EXE_AND_GLOBAL_INIT
+
 #include <QtWidgets/QWidget>
 #include <QVBoxLayout>
 #include <QTimer>
@@ -24,18 +24,13 @@
 #include <helper/util_string.h>
 #include <thread/thread_pool.h>
 
-#include "public/result_code.h"
-#include <interface/smart_base.h>
-#include <interface/smart_object.h>
-#include <interface/object_creater.h>
+#define EXE_AND_GLOBAL_INIT
+#include <helper/public.h>
+
 #include <logger/ILogger.h>
 #include <base/INetHelper.h>
 #include <base/NetHelper.h>
 #include <base/ITimer.h>
-
-#define EXE_AND_GLOBAL_INIT
-#include <base/BaseHelper.h>
-
 
 extern ILoggerPtr g_logger;
 #define LOG ILOG

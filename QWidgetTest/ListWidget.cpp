@@ -56,7 +56,7 @@ void ListWidget::SlotReadFinsh()
 
 	thread_pool::ThreadPool::instance().CommitTask([this]
 		{
-			for (int index = 0; index<loader_.GetInfo()->real_time_list.size();++index)
+			for (size_t index = 0; index<loader_.GetInfo()->real_time_list.size();++index)
 			{
 				const auto& iter = loader_.GetInfo()->real_time_list[index];
 				if (iter->icon.empty())continue;
